@@ -4,8 +4,12 @@ from category.models import Category
 
 # Create your views here.
 def store(request, category_slug=None):
-    category = get_object_or_404(Category, slug=category_slug)
-    products = Product.objects.filter(is_available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(is_available=True, category=category)
+    else:
+        products = Product.objects.filter(is_available=True)
+        
     categories = Category.objects.all()
     context = {
         'products': products,
