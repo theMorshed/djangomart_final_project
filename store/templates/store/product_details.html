@@ -1,5 +1,4 @@
-{% extends 'base.html' %} 
-{% block body %}
+{% extends 'base.html' %} {% block body %}
 <section class="section-content padding-y bg">
   <div class="container">
     <!-- ============================ COMPONENT 1 ================================= -->
@@ -23,7 +22,7 @@
             </div>
             <p>{{ product.description }}</p>
             <hr />
-			In stock: <b>{{ product.stock }}</b>
+            In stock: <b>{{ product.stock }}</b>
             <hr />
             <div class="row">
               <div class="item-option-select">
@@ -72,7 +71,7 @@
             </div>
             <!-- row.// -->
             <hr />
-            <a href="./product-detail.html" class="btn btn-primary">
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">
               <span class="text">Add to cart</span>
               <i class="fas fa-shopping-cart"></i>
             </a>
