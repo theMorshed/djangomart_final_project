@@ -4,7 +4,14 @@ from cart.models import Cart, CartItem
 
 # Create your views here.
 def cart(request):
-    return render(request, 'cart/cart.html')
+    session_id = request.session.session_key
+    cartid = Cart.objects.get(cart_id = session_id)
+    cart_id = Cart.objects.filter(cart_id = session_id).exists()
+    cart_items = None
+    if cart_id:
+        cart_items = CartItem.objects.filter(cart = cartid)
+    context = {'cart_items': cart_items}
+    return render(request, 'cart/cart.html', context)
 
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
