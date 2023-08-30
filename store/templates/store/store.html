@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} 
+{% block body %}
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
   <div class="container">
@@ -66,7 +67,7 @@
               <!-- img-wrap.// -->
               <figcaption class="info-wrap">
                 <div class="fix-height">
-                  <a href="./product-detail.html" class="title"
+                  <a href="{% url 'product_details' product.category.slug product.slug %}" class="title"
                     >{{ product.product_name }}</a
                   >
                   <div class="price-wrap mt-2">

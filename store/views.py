@@ -23,3 +23,9 @@ def store(request, category_slug=None):
         'categories': categories
     }
     return render(request, 'store/store.html', context)
+
+def product_details(request, category_slug, product_slug):
+    product = Product.objects.get(slug=product_slug, category__slug=category_slug)
+    print(product)
+    context = {'product': product}
+    return render(request, 'store/product_details.html', context)
