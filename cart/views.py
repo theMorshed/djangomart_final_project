@@ -22,6 +22,9 @@ def cart(request):
 
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
+    if not request.session.session_key:
+        request.session.create()
+        
     session_id = request.session.session_key
     cart_id = Cart.objects.filter(cart_id=session_id).exists()
     if cart_id:
